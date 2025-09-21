@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us — ReVuCam</title>
+  <meta name="description" content="About the ReVuCam project, the founder, and the development teams behind it." />
+  <meta name="theme-color" content="#0f4c81" />
+  <meta property="og:title" content="About Us — ReVuCam" />
+  <meta property="og:description" content="About the ReVuCam project, the founder, and the development teams behind it." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/og-1200x630.png" />
+  <link rel="icon" href="assets/favicon-32.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+  <!-- Optional structured data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"ReVuCam",
+    "url":"https://YOUR-DOMAIN/",
+    "logo":"https://YOUR-DOMAIN/assets/logo.png",
+    "member":[
+      {"@type":"Person","name":"YOUR NAME","jobTitle":"Founder / Lead Architect"}
+    ]
+  }
+  </script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="index.html" aria-label="ReVuCam home">
+    <!-- Use SVG if you have it; PNG fallback -->
+    <img src="assets/logo.svg" alt="" width="28" height="28" onerror="this.onerror=null;this.src='assets/logo.png'"/>
+    <span>ReVuCam</span>
+  </a>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="architecture.html">Architecture</a>
+    <a href="api.html">API</a>
+    <a href="roadmap.html">Roadmap</a>
+    <a href="faq.html">FAQ</a>
+    <a href="about.html">About</a>
+  </nav>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌓</button>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <h1>About ReVuCam</h1>
+    <p>ReVuCam is a LAN-only, headless multi-camera capture system built for grassroots sport. Two Android field cameras record at 1080p with a 10-minute rolling CMAF buffer; an iOS/iPadOS Director fetches only the last 30 s in full quality and can MARK moments (−8/+4) to save fast-start clips.</p>
+  </section>
+
+  <!-- Founder -->
+  <section class="grid three" aria-labelledby="founder">
+    <h2 id="founder" style="grid-column:1/-1">Founder</h2>
+    <!-- Founder Amit -->
+    <article class="card" style="grid-column: span 3">
+      <div style="display:flex;gap:1rem;align-items:flex-start;flex-wrap:wrap">
+        <img src="assets/amit.png" alt="Amit" width="100" height="116" style="border-radius:12px;border:1px solid var(--border)"/>
+        <div>
+          <h3 style="margin:.2rem 0 .2rem">Amit</h3>
+          <p style="margin:.2rem 0 .8rem;color:var(--muted)">Founder / DevOps Architect</p>
+          <p>8 years of madness, since 2017</p>
+          <p style="margin-top:.6rem">
+            <a href="mailto: itamit2017@gmail.com">Gmail</a> ·
+            <a href="https://www.linkedin.com/in/a-4-amit/" target="_blank" rel="noopener">LinkedIn</a> ·
+            <a href="https://github.com/a-4-amit" target="_blank" rel="noopener">GitHub</a>
+          </p>
+        </div>
+      </div>
+    </article>
+    <!-- Founder Pankaj-->
+    <article class="card" style="grid-column: span 3">
+      <div style="display:flex;gap:1rem;align-items:flex-start;flex-wrap:wrap">
+        <img src="assets/pankaj.png" alt="Pankaj" width="100" height="116" style="border-radius:12px;border:1px solid var(--border)"/>
+        <div>
+          <h3 style="margin:.2rem 0 .2rem">pankaj</h3>
+          <p style="margin:.2rem 0 .8rem;color:var(--muted)">Founder / Development Architect</p>
+          <p>10 years of madness, since 2016</p>
+          <p style="margin-top:.6rem">
+            <a href="mailto: itamit2017@gmail.com">Gmail</a> ·
+            <a href="https://www.linkedin.com/in/a-4-amit/" target="_blank" rel="noopener">LinkedIn</a> ·
+            <a href="https://github.com/a-4-amit" target="_blank" rel="noopener">GitHub</a>
+          </p>
+        </div>
+      </div>
+    </article>
+</section>
+
+  <!-- Helpers / Advisors -->
+  <section class="grid three" aria-labelledby="helpers">
+    <h2 id="helpers" style="grid-column:1/-1">Helpers &amp; Advisors</h2>
+
+    <!-- Repeat/duplicate these cards for each person helping you -->
+    <article class="card">
+      <h3>Person One</h3>
+      <p style="color:var(--muted)">Android Media Advisor</p>
+      <p>Guided MediaCodec tuning for stable 1080p60 CBR and IDR cadence.</p>
+      <p><a href="https://…" target="_blank" rel="noopener">Website</a></p>
+    </article>
+
+    <article class="card">
+      <h3>Person Two</h3>
+      <p style="color:var(--muted)">Networking / WebRTC</p>
+      <p>Reviewed host-only ICE and DataChannel burst settings for LAN.</p>
+      <p><a href="https://…" target="_blank" rel="noopener">Website</a></p>
+    </article>
+
+    <article class="card">
+      <h3>Person Three</h3>
+      <p style="color:var(--muted)">QA / Field Ops</p>
+      <p>Designed soak tests, acceptance criteria, and play-day checklists.</p>
+      <p><a href="https://…" target="_blank" rel="noopener">Website</a></p>
+    </article>
+  </section>
+
+  <!-- Meet the development teams -->
+  <section class="features" aria-labelledby="teams">
+    <h2 id="teams">Meet the development teams</h2>
+    <p style="color:var(--muted)">These are the core disciplines behind ReVuCam. Some roles are “virtual” (one person wearing multiple hats) and some are friends helping part-time.</p>
+  </section>
+
+  <section class="grid three">
+    <article class="card">
+      <h3>Lead Mobile/Video Systems Architect</h3>
+      <p>Owns end-to-end capture→review pipeline, guard-bands, GOP=1 s, drift correction (±50 ms/5 s).</p>
+      <p style="color:var(--muted)">Currently: <strong>YOUR NAME</strong></p>
+    </article>
+
+    <article class="card">
+      <h3>Senior Android Camera/Media</h3>
+      <p>Camera2→MediaCodec (H.264 High, CBR ~7 Mbps, IDR/sec), CMAF writer, rolling 10:00 ring.</p>
+      <p style="color:var(--muted)">Currently: <em>Add name</em></p>
+    </article>
+
+    <article class="card">
+      <h3>Senior iOS AVFoundation</h3>
+      <p>AVAssetResourceLoader progressive playback, angle sync via clock offsets, MARK export.</p>
+      <p style="color:var(--muted)">Currently: <em>Add name</em></p>
+    </article>
+
+    <article class="card">
+      <h3>WebRTC &amp; Real-Time Networking</h3>
+      <p>HTTP-first; optional RTCDataChannel unordered; host-only ICE; DSCP if allowed.</p>
+      <p style="color:var(--muted)">Currently: <em>Add name</em></p>
+    </article>
+
+    <article class="card">
+      <h3>Full-Stack (Apps + Backend-less LAN)</h3>
+      <p>Pairing/enrollment flows, roster DB, micro-APIs, future SFU path.</p>
+      <p style="color:var(--muted)">Currently: <em>Add name</em></p>
+    </article>
+
+    <article class="card">
+      <h3>Backend/DevOps/SRE</h3>
+      <p>ffprobe/MP4Box checks, Perfetto traces, CI scripts, observability.</p>
+      <p style="color:var(--muted)">Currently: <em>Add name</em></p>
+    </article>
+
+    <article class="card">
+      <h3>QA / Media Test</h3>
+      <p>TTFB ≤ 1.5 s, sync ≤ ±50 ms/10 min, soak 2 h @ 1080p60, ring 10:00–10:02, MARK frame-accuracy.</p>
+      <p style="color:var(--muted)">Currently: <em>Add name</em></p>
+    </article>
+
+    <article class="card">
+      <h3>UX Design (Field-friendly)</h3>
+      <p>Big targets, minimal taps, degraded banners, iPad two-up / iPhone single-angle.</p>
+      <p style="color:var(--muted)">Currently: <em>Add name</em></p>
+    </article>
+
+    <article class="card">
+      <h3>Security/Privacy</h3>
+      <p>PIN/QR pairing, pair_token rotation, match_token HMAC, LAN-only defaults.</p>
+      <p style="color:var(--muted)">Currently: <em>Add name</em></p>
+    </article>
+  </section>
+
+  <!-- Contact -->
+  <section class="hero" style="margin-top:2rem">
+    <h2>Contact</h2>
+    <p>
+        Email: <a href="mailto:itamit2017@gmail.com">Gmail</a> · 
+        Github: <a href="https://github.com/a-4-amit">GitHub</a> . 
+        Mobile: <a href="tel:+917982540035" aria-label="Call +91 79825 40035">+91 79825 40035</a> ·
+        WhatsApp: <a href="https://wa.me/917982540035" target="_blank" rel="noopener">Message</a> · 
+        LinkedIn: <a href="https://www.linkedin.com/in/a-4-amit/" target="_blank" rel="noopener">Connect</a>
+    </p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>© 2025 ReVuCam. Built with privacy in mind.</p>
+  <p><a href="https://github.com/YOURUSER/YOURREPO" target="_blank" rel="noopener">GitHub</a></p>
+</footer>
+</body>
+</html>
