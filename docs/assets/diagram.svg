@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420">
+  <style>
+    .b{fill:#10151c;stroke:#223041;stroke-width:2}
+    .t{font:14px sans-serif;fill:#e8eef6}
+    .s{font:12px sans-serif;fill:#b5c4d6}
+  </style>
+  <rect width="100%" height="100%" fill="#0b0f14"/>
+  <rect x="30" y="60" width="240" height="120" rx="12" class="b"/>
+  <text x="150" y="85" text-anchor="middle" class="t">Android Camera A</text>
+  <text x="150" y="108" text-anchor="middle" class="s">1080p60 H.264, 1 s m4s</text>
+  <text x="150" y="130" text-anchor="middle" class="s">10:00 rolling buffer</text>
+  <rect x="30" y="240" width="240" height="120" rx="12" class="b"/>
+  <text x="150" y="265" text-anchor="middle" class="t">Android Camera B</text>
+  <text x="150" y="288" text-anchor="middle" class="s">1080p60 H.264, 1 s m4s</text>
+  <text x="150" y="310" text-anchor="middle" class="s">10:00 rolling buffer</text>
+  <rect x="610" y="150" width="240" height="120" rx="12" class="b"/>
+  <text x="730" y="175" text-anchor="middle" class="t">Director (iPad/iPhone)</text>
+  <text x="730" y="198" text-anchor="middle" class="s">30 s HQ progressive review</text>
+  <text x="730" y="220" text-anchor="middle" class="s">MARK −8/+4 clip</text>
+  <rect x="330" y="170" width="200" height="80" rx="12" class="b"/>
+  <text x="430" y="195" text-anchor="middle" class="t">5 GHz Wi-Fi (LAN)</text>
+  <text x="430" y="218" text-anchor="middle" class="s">HTTP default • WebRTC optional</text>
+  <path d="M270 120 H330" stroke="#4ecdc4" stroke-width="3"/>
+  <path d="M270 300 H330" stroke="#4ecdc4" stroke-width="3"/>
+  <path d="M530 210 H610" stroke="#4ecdc4" stroke-width="3"/>
+  <text x="300" y="112" class="s">/v1/info, /v1/segments</text>
+  <text x="300" y="292" class="s">/v1/info, /v1/segments</text>
+  <text x="570" y="202" class="s">30× 1 s m4s</text>
+</svg>

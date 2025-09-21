@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Architecture — CricketCam</title>
+  <meta name="description" content="Capture on Android, review on iOS/iPadOS. Rolling CMAF buffer, 30 s progressive review, MARK clips, LAN-only." />
+  <meta name="theme-color" content="#0f4c81" />
+  <meta property="og:title" content="Architecture — CricketCam" />
+  <meta property="og:description" content="Capture on Android, review on iOS/iPadOS. Rolling CMAF buffer, 30 s progressive review, MARK clips, LAN-only." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/og.png" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="preload" href="styles.css" as="style" />
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="index.html" aria-label="CricketCam home">
+    <img src="assets/logo.svg" alt="" width="28" height="28" />
+    <span>CricketCam</span>
+  </a>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="architecture.html">Architecture</a>
+    <a href="api.html">API</a>
+    <a href="roadmap.html">Roadmap</a>
+    <a href="faq.html">FAQ</a>
+  </nav>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌓</button>
+</header>
+<main class="container">
+\
+<h1>Architecture</h1>
+<p>This system treats phones like purpose-built field cameras. Capture is continuous and headless; review is high-quality and on demand.</p>
+
+<h2>Devices</h2>
+<ul>
+  <li><strong>Android Cameras</strong>: Lava LXX504 (MediaTek Dimensity 7050), Android 12+, 5 GHz Wi-Fi</li>
+  <li><strong>Director</strong>: iPad 9 (A13) or iPhone (universal app)</li>
+  <li><strong>Network</strong>: Home 5 GHz Wi-Fi, LAN-only operation</li>
+</ul>
+
+<h2>Capture pipeline (Android)</h2>
+<pre><code>Camera2 → MediaCodec (H.264 High)
+CBR ≈ 7 Mbps, 1080p60, IDR every second (GOP=1 s, no B-frames)
+CMAF writer: 1 s moof/mdat (tfdt continuity, timescale 90k)
+Rolling 10:00 ring (+2 s guard), auto-prune
+HTTP microserver: /v1/info, /v1/init, /v1/segments, /v1/export
+Thermal: throttle serving before any capture change (fps step only between overs)</code></pre>
+
+<h2>Director pipeline (iOS/iPadOS)</h2>
+<pre><code>Bonjour/mDNS discovery → roster (Core Data)
+Ping/pong every 5 s to estimate drift; clamp apply ≤ ±50 ms
+Review 30 s: fetch init then 30 × 1 s m4s; progressive playback with AVAssetResourceLoader → AVPlayer
+MARK (−8/+4): save fast-start MP4 + metadata (no transcode)</code></pre>
+
+<h2>Security model</h2>
+<ol>
+  <li><strong>Pairing</strong> (QR/PIN) → exchange keys; store <code>pair_token</code> (rotated daily)</li>
+  <li><strong>Enrollment</strong> per match → <code>match_token = HMAC(pair_token, "enroll:"+MID+nonce)</code> (TTL)</li>
+  <li>Serving gate: all /v1/segments and /v1/export require <em>MID + match_token</em></li>
+  <li>LAN-only by default; optional HTTPS + certificate pinning</li>
+</ol>
+
+<h2>Performance budgets</h2>
+<ul>
+  <li><strong>TTFB</strong> ≤ 1.5 s (Review → first decoded frame)</li>
+  <li><strong>Sync</strong> ≤ ±50 ms between cameras over 10 min</li>
+  <li><strong>Soak</strong> 2 h at 1080p60; window 10:00–10:02; no gaps</li>
+  <li><strong>Storage</strong> ≈ 540 MB per camera for 10 min ring @ ~7.1 Mbps (video+audio)</li>
+</ul>
+
+</main>
+<footer class="site-footer">
+  <p>© 2025 CricketCam. LAN-only, privacy-first sports capture.</p>
+  <p><a href="https://github.com/" target="_blank" rel="noopener">GitHub</a> · <a href="api.html">API</a> · <a href="roadmap.html">Milestones</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Headless Multi-Camera Sports Capture — CricketCam</title>
+  <meta name="description" content="Two Android headless cameras + one iOS/iPadOS Director. 10-minute rolling CMAF buffer. Director pulls only the last 30 s in full quality and can MARK events." />
+  <meta name="theme-color" content="#0f4c81" />
+  <meta property="og:title" content="Headless Multi-Camera Sports Capture — CricketCam" />
+  <meta property="og:description" content="Two Android headless cameras + one iOS/iPadOS Director. 10-minute rolling CMAF buffer. Director pulls only the last 30 s in full quality and can MARK events." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/og.png" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="preload" href="styles.css" as="style" />
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="index.html" aria-label="CricketCam home">
+    <img src="assets/ReVuCam-1.png" alt="" width="28" height="28" />
+    <span>CricketCam</span>
+  </a>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="architecture.html">Architecture</a>
+    <a href="api.html">API</a>
+    <a href="roadmap.html">Roadmap</a>
+    <a href="faq.html">FAQ</a>
+  </nav>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌓</button>
+</header>
+<main class="container">
+\
+<section class="hero">
+  <h1>Headless multi-camera capture for grassroots cricket</h1>
+  <p>Two Android cameras act like field cams. A universal iOS/iPadOS Director fetches only the last 30 s in full quality for instant review. MARK key moments to auto-save a 12 s clip (−8/+4). LAN-only. No cloud. No transcoding.</p>
+  <div class="cta">
+    <a class="btn primary" href="architecture.html">See how it works</a>
+    <a class="btn" href="api.html">Browse the API</a>
+  </div>
+</section>
+
+<section class="grid three">
+  <article class="card">
+    <h3>True headless capture</h3>
+    <p>Android Foreground Service + MediaCodec H.264 High, 1080p60, CBR ~7 Mbps, GOP=1 s (IDR/sec). Writes 1 s CMAF m4s into a 10:00 rolling buffer.</p>
+  </article>
+  <article class="card">
+    <h3>Director-led HQ review</h3>
+    <p>Director pulls only the last 30 s from selected cameras over HTTP (LAN) and plays progressively via AVFoundation. No preview-quality stream.</p>
+  </article>
+  <article class="card">
+    <h3>MARK & export</h3>
+    <p>Tap WICKET/FOUR/SIX to save a 12 s clip (−8/+4) as fast-start MP4 with metadata. ISO masters remain on the cameras.</p>
+  </article>
+</section>
+
+<section class="features">
+  <h2>Key features</h2>
+  <ul class="checklist">
+    <li>mDNS/Bonjour discovery; QR/PIN pairing; per-match enrollment with HMAC tokens</li>
+    <li>Clock sync via clap + drift pings every 5 s (apply ≤ ±50 ms/update)</li>
+    <li>HTTP-first transport; optional WebRTC DataChannel (unordered) toggle</li>
+    <li>Thermal policy: never alter quality mid-over; serve slowly before stepping fps between overs</li>
+  </ul>
+</section>
+
+<section class="diagram">
+  <h2>System sketch</h2>
+  <img src="assets/diagram.svg" alt="CricketCam architecture diagram" />
+</section>
+
+<section class="cta2">
+  <a class="btn primary" href="roadmap.html">View milestones</a>
+  <a class="btn" href="faq.html">FAQ</a>
+</section>
+
+</main>
+<footer class="site-footer">
+  <p>© 2025 CricketCam. LAN-only, privacy-first sports capture.</p>
+  <p><a href="https://github.com/" target="_blank" rel="noopener">GitHub</a> · <a href="api.html">API</a> · <a href="roadmap.html">Milestones</a></p>
+</footer>
+</body>
+</html>

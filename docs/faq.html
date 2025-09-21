@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FAQ — CricketCam</title>
+  <meta name="description" content="Common questions about CricketCam: privacy, network, hardware, and operations." />
+  <meta name="theme-color" content="#0f4c81" />
+  <meta property="og:title" content="FAQ — CricketCam" />
+  <meta property="og:description" content="Common questions about CricketCam: privacy, network, hardware, and operations." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/og.png" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="preload" href="styles.css" as="style" />
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="index.html" aria-label="CricketCam home">
+    <img src="assets/logo.svg" alt="" width="28" height="28" />
+    <span>CricketCam</span>
+  </a>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="architecture.html">Architecture</a>
+    <a href="api.html">API</a>
+    <a href="roadmap.html">Roadmap</a>
+    <a href="faq.html">FAQ</a>
+  </nav>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌓</button>
+</header>
+<main class="container">
+\
+<h1>FAQ</h1>
+
+<h2>Is Internet required?</h2>
+<p>No. Everything works LAN-only on your 5 GHz Wi-Fi. Internet is optional.</p>
+
+<h2>Does the Director see a low-res preview?</h2>
+<p>No. By design there’s only high-quality review of the last 30 s (progressive as bytes arrive).</p>
+
+<h2>What happens when phones heat up?</h2>
+<p>Serving slows or pauses before capture changes. If required, fps steps from 60→30 <em>between overs only</em>, and the Director is notified.</p>
+
+<h2>Where are MARK clips saved?</h2>
+<p>Locally on the Director (fast-start MP4) with a metadata sidecar. ISO masters remain on cameras.</p>
+
+<h2>What sports are supported?</h2>
+<p>Spec targets cricket first; volleyball and badminton are natural follow-ups with the same pipeline.</p>
+
+<h2>How do I point my domain to this site?</h2>
+<p>Add your custom domain in the repo at <code>/docs/CNAME</code> and set DNS to GitHub Pages. See GitHub’s docs for A/AAAA or CNAME targets.</p>
+
+</main>
+<footer class="site-footer">
+  <p>© 2025 CricketCam. LAN-only, privacy-first sports capture.</p>
+  <p><a href="https://github.com/" target="_blank" rel="noopener">GitHub</a> · <a href="api.html">API</a> · <a href="roadmap.html">Milestones</a></p>
+</footer>
+</body>
+</html>

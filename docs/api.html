@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HTTP API — CricketCam</title>
+  <meta name="description" content="Minimal LAN API for discovery, enrollment and fragment serving. HTTP-first; WebRTC optional." />
+  <meta name="theme-color" content="#0f4c81" />
+  <meta property="og:title" content="HTTP API — CricketCam" />
+  <meta property="og:description" content="Minimal LAN API for discovery, enrollment and fragment serving. HTTP-first; WebRTC optional." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/og.png" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="preload" href="styles.css" as="style" />
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="index.html" aria-label="CricketCam home">
+    <img src="assets/logo.svg" alt="" width="28" height="28" />
+    <span>CricketCam</span>
+  </a>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="architecture.html">Architecture</a>
+    <a href="api.html">API</a>
+    <a href="roadmap.html">Roadmap</a>
+    <a href="faq.html">FAQ</a>
+  </nav>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌓</button>
+</header>
+<main class="container">
+\
+<h1>Camera HTTP API</h1>
+<p>All endpoints are LAN-local to each camera. Default port: <code>8134</code>.</p>
+
+<h2>Discovery</h2>
+<pre><code>GET /v1/info
+200 OK
+{ "id":"cam-uuid","model":"Lava LXX504","soc":"D7050","codec":"h264",
+  "fps":60,"gop":1,"bitrate":7000000,"hasAudio":true,
+  "now_ms":1725169234123,"serving":"ok",
+  "thermals":{"state":"nominal","cpuC":41} }</code></pre>
+
+<h2>Pairing</h2>
+<pre><code>POST /v1/pair
+Headers: Authorization: Pairing-Nonce &lt;nonce&gt;
+Body:    { "director_pubkey":"...", "display_name":"iPad 9", "pin":"123456" }
+200 OK   { "camera_pubkey":"...", "pair_token":"&lt;base64url&gt;" }</code></pre>
+
+<h2>Enrollment</h2>
+<pre><code>POST /v1/matches/enroll
+Headers: Authorization: Bearer &lt;pair_token&gt;
+Body:    { "mid":"&lt;uuid&gt;", "match_token":"&lt;hmac&gt;", "ttl":7200, "role":"A" }
+200 OK   { "ok":true }</code></pre>
+
+<h2>Init segments</h2>
+<pre><code>GET /v1/init/video
+GET /v1/init/audio  (if audio enabled)
+Headers: Authorization: Bearer &lt;match_token&gt;</code></pre>
+
+<h2>Serving fragments</h2>
+<pre><code>GET /v1/segments?mid=&lt;MID&gt;&amp;from=&lt;ms&gt;&amp;to=&lt;ms&gt;&amp;tracks=video[,audio]
+Headers: Authorization: Bearer &lt;match_token&gt;
+Response: HTTP chunked stream of 1 s m4s (moof/mdat) in order</code></pre>
+
+<h2>Export MARK clip</h2>
+<pre><code>POST /v1/export?mid=&lt;MID&gt;&amp;from=&lt;ms&gt;&amp;to=&lt;ms&gt;&amp;tracks=video[,audio]
+Headers: Authorization: Bearer &lt;match_token&gt;
+Response: application/mp4 (fast-start; no transcode)</code></pre>
+
+<h2>WebRTC (optional)</h2>
+<p>Unordered RTCDataChannel for the same messages (<code>INIT</code>, <code>SEGMENTS</code>, <code>PING/PONG</code>) on host-only ICE; disabled by default.</p>
+
+<h2>mDNS TXT</h2>
+<pre><code>id=&lt;uuid&gt;;model=LavaLXX504;soc=D7050;codec=h264;fps=60;gop=1;br=7000k;audio=1;pin=1;ver=4</code></pre>
+
+</main>
+<footer class="site-footer">
+  <p>© 2025 CricketCam. LAN-only, privacy-first sports capture.</p>
+  <p><a href="https://github.com/" target="_blank" rel="noopener">GitHub</a> · <a href="api.html">API</a> · <a href="roadmap.html">Milestones</a></p>
+</footer>
+</body>
+</html>

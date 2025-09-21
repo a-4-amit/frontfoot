@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Roadmap %TITLE% Milestones — CricketCam</title>
+  <meta name="description" content="Development plan from skeletons to QA soak, with thermal safeguards and optional WebRTC." />
+  <meta name="theme-color" content="#0f4c81" />
+  <meta property="og:title" content="Roadmap %TITLE% Milestones — CricketCam" />
+  <meta property="og:description" content="Development plan from skeletons to QA soak, with thermal safeguards and optional WebRTC." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/og.png" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="preload" href="styles.css" as="style" />
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="index.html" aria-label="CricketCam home">
+    <img src="assets/logo.svg" alt="" width="28" height="28" />
+    <span>CricketCam</span>
+  </a>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="architecture.html">Architecture</a>
+    <a href="api.html">API</a>
+    <a href="roadmap.html">Roadmap</a>
+    <a href="faq.html">FAQ</a>
+  </nav>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌓</button>
+</header>
+<main class="container">
+\
+<h1>Roadmap</h1>
+<ol class="roadmap">
+  <li><strong>M0</strong> — Skeletons & tooling (Android/iOS compile; mDNS & /v1/info stubs)</li>
+  <li><strong>M1</strong> — Android capture: 10-min rolling CMAF (1 s) @ 1080p60 + HTTP /init,/segments</li>
+  <li><strong>M2</strong> — Pairing: QR/PIN flow; roster on Director</li>
+  <li><strong>M3</strong> — Director review: single-angle progressive 30 s (TTFB ≤ 1.5 s)</li>
+  <li><strong>M4</strong> — Drift & dual-angle sync (±50 ms over 10 min)</li>
+  <li><strong>M5</strong> — MARK (v1 camera export; v2 local remux)</li>
+  <li><strong>M6</strong> — Enrollment & auth: MID + match_token gate</li>
+  <li><strong>M7</strong> — Thermal & degraded serving (UI banner)</li>
+  <li><strong>M8</strong> — QA soak: 2 h @1080p60; window 10:00–10:02; MARK frame-accuracy</li>
+  <li><em>Optional:</em> M9 WebRTC DC; M10 HTTPS + pinning</li>
+</ol>
+
+<h2>Acceptance criteria</h2>
+<ul>
+  <li>First frame ≤ 1.5 s from Review tap</li>
+  <li>Inter-camera sync ≤ ±50 ms over 10 min</li>
+  <li>2 h soak without gaps; thermal policy honored</li>
+  <li>MARK 12 s export is frame-accurate and fast-start</li>
+</ul>
+
+</main>
+<footer class="site-footer">
+  <p>© 2025 CricketCam. LAN-only, privacy-first sports capture.</p>
+  <p><a href="https://github.com/" target="_blank" rel="noopener">GitHub</a> · <a href="api.html">API</a> · <a href="roadmap.html">Milestones</a></p>
+</footer>
+</body>
+</html>
